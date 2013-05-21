@@ -1,4 +1,4 @@
-function s -d "fishmarks save (stolen from bashmarks)"
+function s -d "fishmarks save a bookmark to current directory with given name"
          fishmark_help $argv[1]
          fishmark_source
          fishmark_name_valid $argv

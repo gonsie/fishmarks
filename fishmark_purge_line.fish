@@ -1,4 +1,4 @@
-function fishmark_purge_line -d "remove a line from fishmarks file"
+function fishmark_purge_line -d "remove a line from bookmark file"
          if test -s $argv[1]
             # safely create a temp file
             set t (mktemp -t bashmarks.XXXXXX); or exit 1

@@ -1,4 +1,4 @@
-function fishmark_source -d "set up fishmarks"
+function fishmark_source -d "set up bookmark file"
          set -g SDIRS ~/.sdirs
          if not test -e $SDIRS
             touch $SDIRS

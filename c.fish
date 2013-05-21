@@ -1,4 +1,4 @@
-function c -d "fishmark change to bookmark directory"
+function c -d "fishmarks change to bookmark directory"
          fishmark_help $argv[1]
          fishmark_source
          if test -z $argv

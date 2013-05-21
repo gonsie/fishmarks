@@ -1,4 +1,4 @@
-function fishmark_help -d "prints fishmark help if flagged (stolen from bashmarks)"
+function fishmark_help -d "prints fishmarks help if flagged"
          # note: cannot use contains because of "-h" override
          set __help 0
          for h in $argv
