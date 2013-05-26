@@ -1,16 +1,15 @@
-### STILL A WORK IN PROGRESS!
-
-# Fishmarks is a set of fish functions which allow you to save and jump to commonly used directories. 
+### Fishmarks is a set of fish functions which allow you to save and jump to commonly used directories. 
 
 ## Compatability
 
-Fishmarks work with my brach of bashmarks. There is a slightly different format for the .sdirs file, but this can be used with both bash and fish.
+Fishmarks is based on the awesome [Bashmarks](http://www.huyng.com/projects/bashmarks/) by [huyng](https://github.com/huyng/bashmarks). 
+
+Fishmarks work with my brach of Bashmarks. There is a slightly different format for the .sdirs file, but this can be used with both bash and fish.
 
 ## Install
 
 1. git clone git://github.com/gonsie/fishmarks.git
 2. make install
-3. source **~/.local/bin/bashmarks.sh** from within your **~.bash\_profile** or **~/.bashrc** file
 
 ## Shell Commands
 
@@ -35,3 +34,6 @@ Fishmarks work with my brach of bashmarks. There is a slightly different format 
     
 All of your directory bookmarks are saved in a file called ".sdirs" in your HOME directory.
 
+## TODO
+
+- fish completions
