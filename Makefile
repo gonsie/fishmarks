@@ -1,12 +1,12 @@
-INSTALL_DIR=~/.config/fish/functions
+INSTALL_DIR=~/.config/fish
 
 all:
 	@echo "Please run 'make install'"
 
 install:
 	@echo ""
-	mkdir -p $(INSTALL_DIR)
-	cp *.fish $(INSTALL_DIR)
+	mkdir -p $(INSTALL_DIR)/functions
+	cp functions/*.fish $(INSTALL_DIR)/functions/
 	@echo ""
 	@echo ''
 	@echo 'USAGE:'
