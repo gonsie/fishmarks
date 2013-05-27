@@ -2,9 +2,9 @@
 
 ## Compatability
 
-Fishmarks is based on the awesome [Bashmarks](http://www.huyng.com/projects/bashmarks/) by [huyng](https://github.com/huyng/bashmarks). 
+Fishmarks is based on the awsome project [huyng/bashmarks](http://www.huyng.com/projects/bashmarks/).
 
-Fishmarks work with my brach of Bashmarks. There is a slightly different format for the .sdirs file, but this can be used with both bash and fish.
+Fishmarks work with [gonsie/bashmarks](http://github.com/gonsie/bashmarks). There is a slightly different format for the .sdirs file, but this can be used with both bash and fish.
 
 ## Install
 
@@ -32,8 +32,5 @@ Fishmarks work with my brach of Bashmarks. There is a slightly different format 
 
 ## Where Fishmarks are stored
     
-All of your directory bookmarks are saved in a file called ".sdirs" in your HOME directory.
+All of your directory bookmarks are saved in a file called ".sdirs" in your HOME directory. 
 
-## TODO
-
-- fish completions
