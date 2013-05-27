@@ -6,7 +6,9 @@ all:
 install:
 	@echo ""
 	mkdir -p $(INSTALL_DIR)/functions
+	mkdir -p $(INSTALL_DIR)/completions
 	cp functions/*.fish $(INSTALL_DIR)/functions/
+	cp completions/*.fish $(INSTALL_DIR)/completions/
 	@echo ""
 	@echo ''
 	@echo 'USAGE:'
