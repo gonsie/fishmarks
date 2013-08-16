@@ -5,7 +5,7 @@ function fishmark_source -d "set up bookmark file"
          else
             set -l __ns (cut -f1 -d' ' $SDIRS)
             set -l __ds (cut -f2 -d' ' $SDIRS)
-            set -l __i (wc -l $SDIRS | cut -f8 -d' ')
+            set -l __i (wc -l < $SDIRS)
             while test $__i -ne 0
                   set -g $__ns[$__i] $__ds[$__i]
                   set __i (math $__i - 1)
