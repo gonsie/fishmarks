@@ -1,0 +1,143 @@
+#+title: Fishmarks
+#+author: Elsa Gonsiorowski
+
+* Readme
+:EXPORT
+
+** Background
+
+Fishmarks is a set of functions for the [[https://fishshell.com][Fish Shell]] which allow you to bookmark and jump to commonly used directories.
+It is based on the [[http://www.huyng.com/projects/bashmarks][huyng/bashmarks]] project, but with a few modifications.
+See the [[https://github.com/gonsie/bashmarks][gonsie/bashmarks]] project for portable use in both fish and bash.
+
+** Installation
+
+1. ~git clone git://github.com/gonsie/fishmarks.git~
+2. (Optional) update the installation location specified at the top of the ~Makefile~
+3. ~make install~
+
+** Shell Commands
+
+#+BEGIN_SRC text :noweb tangle :tangle README.md
+<<usage_text>>
+#+END_SRC
+
+* Documentation & Code
+
+To create consistently documentation and code, I am using Emacs Orgmode to generate all of the files for this project.
+The need for this arises because Fish requires that the filename matches the function name.
+Thus, through orgmode, users /should/ be able to change keybindings in one place.
+
+* Fishmarks
+
+Fishmarks consist of five user-facing functions:
+
+1. A function *save* or bookmark the current location with a short name.
+2. A function to *jump* or change directories to bookmarked location.
+3. A function to *delete* a bookmark.
+4. A function to *list* all available bookmarks.
+5. A function to *print* the location associated with a given short name.
+
+Define the keybindings you would like for these functions here:
+
+#+MACRO: save   s
+#+MACRO: jump   c
+#+MACRO: delete d
+#+MACRO: list   l
+#+MACRO: print  p
+
+#+tblname: usage-table
+| Usage                        | Text                                                       |
+|------------------------------+------------------------------------------------------------|
+| {{{save}}} <bookmark_name>   | Saves the current directory as a 'bookmark_name'           |
+| {{{jump}}} <bookmark_name>   | Goes (cd) to the directory associated with 'bookmark_name' |
+| {{{jump}}}                   | Goes to home directory (cd ~)                              |
+| {{{print}}} <bookmark_name>  | Prints the directory associated with 'bookmark_name'       |
+| {{{delete}}} <bookmark_name> | Deletes the bookmark                                       |
+| {{{list}}}                   | Lists all available bookmarks                              |
+
+#+NAME: python-usage-generator
+#+BEGIN_SRC python :var records=usage-table :exports results :results output verbatim drawer
+  print("#+name: useage_test")
+  print("#+BEGIN_SRC text")
+  print("echo \"" + ",".join("{} - {}\"".format([line[1], line[2]]) for line in records))
+  print()
+  print("#+END_SRC")
+#+END_SRC
+
+#+results python-usage-generator
+:RESULTS:
+
+#+BEGIN_SRC emacs-lisp :tangle yes :var DUMMY=(progn (org-babel-goto-named-src-block "python-usage-generator") (org-ctrl-c-ctrl-c))
+; run pre-tangle hooks by putting them in the var.
+#+END_SRC
+
+#+BEGIN_SRC org :tangle test.txt :noweb tangle
+<<usage_text>>
+#+END_SRC
+
+#+NAME: usage_text
+#+BEGIN_SRC text :exports code
+{{{save}}} <bookmark_name> - Saves the current directory as a 'bookmark_name'
+{{{jump}}} <bookmark_name> - Goes (cd) to the directory associated with 'bookmark_name'
+{{{jump}}}                 - Goes to home directory (cd ~)
+{{{print}}} <bookmark_name> - Prints the directory associated with 'bookmark_name'
+{{{delete}}} <bookmark_name> - Deletes the bookmark
+{{{list}}}                 - Lists all available bookmarks
+#+END_SRC
+
+** Bookmark Storage
+
+The bookmarks are stored in a single file: =~/.sdirs=.
+This file
+
+** Support Functions
+
+There is some functionality that should be available from any of the user-facing functions.
+This includes the ability to show help information, to validate a given bookmark, and to ensure the bookmarks file is setup.
+
+*** Help
+
+#+BEGIN_SRC fish :exports code :noweb yes :tangle fishmark_help.fish
+function fishmark_help -d "prints fishmarks help if flagged"
+         # note: cannot use `contains` because of "-h" override
+         set __help 0
+         for h in $argv
+             if test $h = "-h"
+                set __help 1
+             else if test $h = "-help"
+                set __help 1
+             else if test $h = "--help"
+                set __help 1
+             end
+         end
+         if test $__help -eq 1
+                echo ""
+                echo "s <bookmark_name> - Saves the current directory as a 'bookmark_name'"
+                echo "c <bookmark_name> - Goes (cd) to the directory associated with 'bookmark_name'"
+                echo "c                 - Goes to home directory (cd ~)"
+                echo "p <bookmark_name> - Prints the directory associated with 'bookmark_name'"
+                echo "d <bookmark_name> - Deletes the bookmark"
+                echo "l                 - Lists all available bookmarks"
+                kill -SIGINT %self
+         end
+end
+#+END_SRC
+
+*** Validate
+
+*** Setup
+
+*** COMMENT Remove
+
+** User-Facing Functions
+
+*** Save
+
+*** Jump
+
+*** Delete
+
+*** List
+
+*** Print
